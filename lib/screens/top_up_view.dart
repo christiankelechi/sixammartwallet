@@ -10,6 +10,8 @@ class TopUpFunction extends StatefulWidget {
 }
 
 class _TopUpFunctionState extends State<TopUpFunction> {
+  List<String> items=['Bank Transfer','Binance','Trust Wallet','Flutter wave'];
+  String? selectedItem='Bank Transfer';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +74,20 @@ class _TopUpFunctionState extends State<TopUpFunction> {
                     SizedBox(height: 25,),
                   
                   SizedBox(height: 25,),
+                  Column(children: [
+                    Text(
+                    
+                    'Payment Method',style: TextStyle(fontSize: 26,),
+                    textAlign: TextAlign.left,
+                  ),
+                 DropdownButton<String>(items:items.map((item) => DropdownMenuItem<String>(value: item,child: Text(item,style: TextStyle(fontSize: 24))),).toList(),
+                 value: selectedItem, 
+                 onChanged: (item)=>setState(()=>selectedItem=item),
+                 ),
+                  ],
+                  ),
+                  SizedBox(height: 25,),
+                  
                   Text(
                     
                     'Amount \(\$\)',style: TextStyle(fontSize: 26,),
@@ -90,10 +106,10 @@ class _TopUpFunctionState extends State<TopUpFunction> {
                   borderSide: const BorderSide(width: 3, color: Color.fromRGBO(12, 11, 11, 1)),
                   borderRadius: BorderRadius.circular(15),
                 ))),
-                  
                   SizedBox(height: 25,),
                             ]),
                 ),
+                
               ),
             ),
             SizedBox(height: 25,),
@@ -117,13 +133,17 @@ class _TopUpFunctionState extends State<TopUpFunction> {
           //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
           //     children: [Text('Balance'), Text('2990000')],)
           // ],)
+          
            ]
           ),
         
         ),
       ),
- 
+
     );
 
   }
+void dropdownCallback(String? selectedValue){
+
+}
 }
